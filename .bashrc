@@ -15,6 +15,8 @@ export PATH="/home/turdle/.cargo/bin:$PATH"
 export CC=/usr/bin/gcc
 export LD=/usr/bin/gcc
 
+export XDG_CONFIG_HOME="/home/turdle/.config"
+
 # for gcc
 export PREFIX="/usr/local/i386elfgcc"
 export TARGET=i386-elf
