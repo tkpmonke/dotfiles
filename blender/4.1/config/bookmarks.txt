@@ -1,0 +1,8 @@
+[Bookmarks]
+[Recent]
+/home/turdle/Projects/shooter/bin/models/
+/home/turdle/godot-projects/
+!Home
+/home/turdle/
+/home/turdle/Projects/Shooter/bin/models/
+/home/turdle/Downloads/

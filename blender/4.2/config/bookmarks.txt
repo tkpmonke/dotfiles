@@ -1,0 +1,13 @@
+[Bookmarks]
+[Recent]
+/home/turdle/blender stuff/
+/home/turdle/Downloads/
+!Home
+/home/turdle/
+/home/turdle/Documents/
+/home/turdle/sabbath/sabbath_iso/assets/wallpapers/
+/home/turdle/sabbath_iso/archlive/assets/wallpapers/
+/home/turdle/Projects/implosion-test/game/models/banan/
+/home/turdle/Projects/implosion-test/game/
+/home/turdle/Projects/shooter/bin/models/
+/home/turdle/Projects/shooter/bin/models/cube/

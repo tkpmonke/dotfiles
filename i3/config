@@ -20,7 +20,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -53,9 +53,9 @@ bindsym $mod+Control+Return exec firefox
 bindsym $mod+Shift+Return exec thunar
 
 # music control
-bindsym Control+$mod+Right exec playerctl next
-bindsym Control+$mod+Left exec playerctl previous
-bindsym Control+$mod+Up exec playerctl play-pause
+bindsym Control+$mod+Right exec  --no-startup-id "playerctl next       -p spotify,%any"
+bindsym Control+$mod+Left exec   --no-startup-id "playerctl previous   -p spotify,%any"
+bindsym Control+$mod+Up exec     --no-startup-id "playerctl play-pause -p spotify,%any"
 
 # screenshot
 bindsym Control+Print exec flameshot gui
@@ -69,7 +69,7 @@ bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 bindsym $mod+d exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+bindcode $mod+23 exec --no-startup-id j4-dmenu-desktop --display-binary --term alacritty
 
 # change focus
 bindsym $mod+j focus left
@@ -197,7 +197,9 @@ bindsym $mod+r mode "resize"
 bar {
    status_command bumblebee-status -m playerctl kernel cpu memory arch-update \
       aur-update datetime git \
-		pasink pasource system -p time.format="%H:%M" interval=0.25 -t moonlight-powerline
+		pasink pasource system -p time.format="%H:%M" interval=0.25    \
+      playerctl.args="-p spotify,%any" -t moonlight-powerline  
+       
    colors {
     separator #AAAAAA
     background #111111
@@ -213,20 +215,15 @@ bar {
 gaps inner 5
 gaps outer 5
 
-exec picom
+exec --no-startup-id picom
 
-exec ~/.config/audio.sh
+exec --no-startup-id ~/.config/audio.sh
 
-exec --no-startup-id feh --bg-fill ~/Downloads/background.jpeg
+exec_always --no-startup-id feh --bg-fill ~/Downloads/background.jpeg
 exec i3-msg 'workspace 3;'
 exec i3-msg 'workspace 3; exec /opt/spotify/spotify; workspace 3;'
 exec i3-msg 'workspace 3; exec discord; workspace 3;'
-exec i3-msg 'workspace 3; exec steam; workspace 3;'
 
-# include ~/.config/i3/colors
-
-# for i3status's uptime reading
-exec watch -n 60 ~/.config/i3status/uptime.sh
 client.focused #8756BB #8756BB #9E9CFF #FFFFFF
 
 client.focused_inactive #e7d8b1 #e7d8b1 #181715 #A074C4

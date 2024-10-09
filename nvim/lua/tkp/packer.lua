@@ -9,10 +9,12 @@ return require('packer').startup(function(use)
 -- or                            , branch = '0.1.x',
   requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use { "catppuccin/nvim", as = "catppuccin",
+  
+  use { "folke/tokyonight.nvim", as = "tokyonight",
   config = function()
-     vim.cmd.colorscheme "catppuccin-macchiato"
-     end}
+     vim.cmd.colorscheme "tokyonight-night"
+     end
+  }
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('nvim-treesitter/playground')
   use('mbbill/undotree')
@@ -40,6 +42,34 @@ return require('packer').startup(function(use)
                      { "nvim-treesitter/nvim-treesitter"} 
                    }
   }
+   
 
+  use 'jbyuki/venn.nvim'
+
+  use({
+    'MeanderingProgrammer/render-markdown.nvim',
+    after = { 'nvim-treesitter' },
+    requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+    requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+    
+   })
+
+   use {
+      '0styx0/abbreinder.nvim',
+      requires = {
+         {
+            '0styx0/abbremand.nvim',
+            module = 'abbremand'
+         }
+      },
+      config = function()
+         require'abbreinder'.setup()
+      end,
+      event = 'BufRead'
+   }
+
+   use { "ibhagwan/fzf-lua",
+      requires = { "nvim-tree/nvim-web-devicons" }
+   }
 end)
 
